@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengumuman Kelulusan — SMKN 2 Gerung</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: #F0F2ED;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2.5rem 1rem 4rem;
+  }
+
+  .wrap {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    padding: 1.75rem 1.25rem 1.5rem;
+    background: #fff;
+    border: 1px solid #E2E8DA;
+    border-radius: 18px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  }
+
+  .logo-ring {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #F4F9ED;
+    border: 2px solid #C0DD97;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    overflow: hidden;
+  }
+
+  .logo-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .logo-ring .logo-fallback {
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .school-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #EAF3DE;
+    color: #27500A;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    border: 1px solid #C0DD97;
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+  }
+
+  .school-badge svg {
+    width: 12px;
+    height: 12px;
+    fill: #3B6D11;
+    flex-shrink: 0;
+  }
+
+  .header h1 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+
+  .header p {
+    font-size: 13px;
+    color: #888;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin: 1.25rem 0 0.5rem;
+  }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: #fff;
+    border: 1px solid #E2E8DA;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .field-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid #EEF2E8;
+  }
+
+  .field-row:last-child {
+    border-bottom: none;
+  }
+
+  .field-icon {
+    width: 46px;
+    background: #EAF3DE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-right: 1px solid #D4E8B8;
+  }
+
+  .field-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #3B6D11;
+  }
+
+  .field-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .field-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #3B6D11;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 9px 14px 0;
+    display: block;
+  }
+
+  .field-body input {
+    display: block;
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 4px 14px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    font-family: inherit;
+    outline: none;
+    transition: background 0.15s;
+  }
+
+  .field-body input:focus {
+    background: #FAFBF8;
+  }
+
+  .field-body input::placeholder {
+    color: #C8C8C8;
+    font-weight: 400;
+  }
+
+  /* ── WARNING ── */
+  .warning {
+    display: none;
+    align-items: flex-start;
+    gap: 8px;
+    background: #FFFAEB;
+    border: 1px solid #FAC775;
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 13px;
+    color: #633806;
+    margin-bottom: 0.75rem;
+    line-height: 1.55;
+  }
+
+  .warning.show { display: flex; }
+
+  .warning svg {
+    width: 15px;
+    height: 15px;
+    fill: #BA7517;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── BUTTON ── */
+  .btn-cek {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #2B5B1A;
+    color: #E8F5D8;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-cek:hover { opacity: 0.88; }
+  .btn-cek:active { transform: scale(0.98); }
+
+  .btn-cek svg {
+    width: 16px;
+    height: 16px;
+    fill: #E8F5D8;
+  }
+
+  /* ── RESULT CARD ── */
+  .result-card {
+    background: #fff;
+    border: 1px solid #E2E8DA;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .result-card.pass { border-color: #5DCAA5; }
+  .result-card.fail { border-color: #F09595; }
+
+  .r-banner {
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .r-banner.pass { background: linear-gradient(135deg, #E1F5EE, #C8EFE0); }
+  .r-banner.fail { background: linear-gradient(135deg, #FCEBEB, #FAD8D8); }
+
+  .status-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pass .status-icon {
+    background: rgba(159,225,203,0.8);
+    border: 1.5px solid #5DCAA5;
+  }
+
+  .fail .status-icon {
+    background: rgba(247,193,193,0.8);
+    border: 1.5px solid #F09595;
+  }
+
+  .status-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pass .status-icon svg { fill: #085041; }
+  .fail .status-icon svg { fill: #791F1F; }
+
+  .r-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .pass .r-title { color: #085041; }
+  .fail .r-title { color: #791F1F; }
+
+  .r-sub {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .pass .r-sub { color: #0F6E56; }
+  .fail .r-sub { color: #A32D2D; }
+
+  .r-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 1rem 1.25rem;
+  }
+
+  .r-cell {
+    background: #F7F9F4;
+    border: 1px solid #EEF2E8;
+    border-radius: 10px;
+    padding: 10px 13px;
+  }
+
+  .r-cell.full {
+    grid-column: 1 / -1;
+  }
+
+  .r-lbl {
+    font-size: 10px;
+    color: #AAA;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .r-val {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* ── DOWNLOAD AREA ── */
+  .download-area {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .btn-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #0F6E56;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .btn-download:hover {
+    background: #085041;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 110, 86, 0.15);
+  }
+
+  .btn-download svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ── NOT FOUND ── */
+  .not-found {
+    background: #fff;
+    border: 1px solid #E2E8DA;
+    border-radius: 16px;
+    padding: 2.2rem 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .nf-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #F4F6F1;
+    border: 1px solid #E2E8DA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+  }
+
+  .nf-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #ABABAB;
+  }
+
+  .not-found p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.65;
+  }
+
+  .not-found strong {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 11.5px;
+    color: #C4C4C4;
+    letter-spacing: 0.02em;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-ring">
+      <img src="ssf.jpg" alt="Logo SMKN 2 Gerung"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="logo-fallback" style="display:none">🎓</span>
+    </div>
+    <div class="school-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+      SMKN 2 Gerung
+    </div>
+    <h1>Pengumuman Kelulusan</h1>
+    <p>Tahun Ajaran 2025 / 2026</p>
+  </div>
+
+  <div class="section-label">Verifikasi Data Siswa</div>
+
+  <div class="form-card">
+    <div class="field-row">
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/>
+        </svg>
+      </div>
+      <div class="field-body">
+        <span class="field-label">Nama Lengkap</span>
+        <input type="text" id="q-nama" placeholder="Masukkan nama lengkap siswa..."
+               autocomplete="off" onkeydown="if(event.key==='Enter')cek()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+        </svg>
+      </div>
+      <div class="field-body">
+        <span class="field-label">Nomor Induk Siswa (NIS)</span>
+        <input type="text" id="q-nis" placeholder="Masukkan NIS..."
+               autocomplete="off" onkeydown="if(event.key==='Enter')cek()">
+      </div>
+    </div>
+  </div>
+
+  <div class="warning" id="warn">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2L1 21h22L12 2zm0 3.5L20.5 19h-17L12 5.5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/>
+    </svg>
+    <span id="warn-text">Mohon isi kedua kolom — Nama dan NIS harus dimasukkan.</span>
+  </div>
+
+  <button class="btn-cek" onclick="cek()">
+    <svg viewBox="0 0 24 24">
+      <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+    </svg>
+    Cek Status Kelulusan
+  </button>
+
+  <div id="result"></div>
+
+  <div class="footer">Data bersifat resmi dan rahasia &mdash; SMKN 2 Gerung &copy; 2025</div>
+</div>
+
+<script>
+  /* ═══════════════════════════════════════════════════════
+     DATA SISWA
+     Format: { nis, nama, jurusan, status }
+  ═══════════════════════════════════════════════════════ */
+  const DATA = [
+  
+  { nis: "0082424238", nama: "Agus Budi Setiawan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0071942277", nama: "Ahmad Raju Liadi", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0071921042", nama: "Ahmad Satriawan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0083165690", nama: "Ahyani Mukhtar", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0064896878", nama: "Andika", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0088234239", nama: "Asror Aroni", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0076723451", nama: "Daminah", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0074773680", nama: "Daud Mahendra Akbar", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0082688934", nama: "Dika Saputra", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0088189060", nama: "Faris Maulana Saputra", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0088141859", nama: "Firman Juliawan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0087328171", nama: "Herdian", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0084414319", nama: "Ilhamsyah", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0083824121", nama: "Irfan Gunawan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0087439410", nama: "Lalu Yusron Al Gozali", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0072817082", nama: "M. Alviyan Ardandi", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0089217124", nama: "M. Gani", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0081306947", nama: "M. Guntur Ramadan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0062495943", nama: "M. Haril Faozan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0065716134", nama: "M. Kasdi Al Qadri", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0085218798", nama: "M. Loby Alfin", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0084538234", nama: "M. Mujahidin", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0082432798", nama: "M. Zikri Irwan", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0087255367", nama: "Moh. Gega Satria Graha", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0087196995", nama: "Muhammad Abdul Holil", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0095457332", nama: "Muhammad Erwin", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0086892869", nama: "Muhammad Solihin", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0089027740", nama: "Radit Juardi", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0077044907", nama: "Rama Pramudia", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0087789033", nama: "Ripki Jahuri", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0079022586", nama: "Riski Handayani", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0062716476", nama: "Rohmat Badri", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0076897241", nama: "Sahril", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0084847472", nama: "Sahril Saputra", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0076024986", nama: "Wahyu Satriadi", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0089878637", nama: "Wahyudi", jurusan: "Teknik Sepeda Motor", status: "LULUS" },
+  { nis: "0079322957", nama: "Ahmad Hidayatulloh", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0078705475", nama: "Ahmad Padli", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0081846866", nama: "Andika Aprianto", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0084302278", nama: "Asfari", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0076912069", nama: "Fahrul Rozi", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0082392909", nama: "Irgi Fardiansyah", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0087315167", nama: "Jilal Ahmad Gilang", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0088315506", nama: "Muhammad Riznan", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0071737840", nama: "Rafli Faturrahman", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0082534072", nama: "Suhardittiyawan", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "3057796811", nama: "Tony Gunawan", jurusan: "Teknik Pengelasan", status: "LULUS" },
+  { nis: "0083616981", nama: "Afrilliani", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0076846200", nama: "Danaufan", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0084417511", nama: "Fathul Aziz", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0083565550", nama: "Irmawati", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0072614226", nama: "Kariani", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0083220176", nama: "Mariana", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0088857359", nama: "Riska", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0072949467", nama: "Saeton Januari", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0083255306", nama: "Soleha", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "3088507441", nama: "Tarapatun Nazafa", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0089476351", nama: "Wahida Inayati", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0087228697", nama: "Widyawati", jurusan: "Teknik Elektronika Industri", status: "LULUS" },
+  { nis: "0081841926", nama: "Adenin Pitriyani", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0081132248", nama: "Amelia", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0075076814", nama: "Dimas Saputra", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0081213940", nama: "Emawati", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0077023259", nama: "Fera Rohida", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "3075686717", nama: "Fitriani", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0085868327", nama: "Hijriatun Hikmah", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "3083231743", nama: "Jeni Haya Fatma", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0082359014", nama: "Juliana", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0081441645", nama: "Karima", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0085380364", nama: "Mizza Sakila Razna", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0083992227", nama: "Moh. Alvito Maulana Setiawan", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0086826098", nama: "Muhammad Anggi", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0084772653", nama: "Riska Safitri", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0081443466", nama: "Shellya Dwi Handayani", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0085936680", nama: "Solihin", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0085433662", nama: "Vidia Ananda", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0083574771", nama: "Wahyu Yuhana Adelia", jurusan: "Teknik Otomasi Industri", status: "LULUS" },
+  { nis: "0087223120", nama: "Ahmad Rizky Al-Farozi", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0089364855", nama: "Alfaini", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0086071074", nama: "Fadila Safitri", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0077483152", nama: "Haerul Anisa", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0087388088", nama: "Irma Suryani", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0087686169", nama: "Maulida", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0082108171", nama: "Nadin Oktaviana", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0081467472", nama: "Muhammad Aziz", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0084323259", nama: "Ni'matul Hasanah", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0083515250", nama: "Nurul Hayati", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0086861691", nama: "Pipin Handayani", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0083922278", nama: "Pitrah Ramadani", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0082108172", nama: "Ratna Sari", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0081213941", nama: "Royan Prayogi", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0087196996", nama: "Sahrul Ramadan", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0083231744", nama: "Sariati", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0083574772", nama: "Silviana", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0085433663", nama: "Sunaini", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0081443467", nama: "Wahyu Fitriadi", jurusan: "Teknik Mekatronika", status: "LULUS" },
+  { nis: "0072949468", nama: "Adi Santoso", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0078705476", nama: "Ahmad Zaelani", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0076912070", nama: "Alwan Syahroni", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0075076815", nama: "Ariadi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0084302279", nama: "Asmuni", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0076846201", nama: "Dani Ramdani", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0072614227", nama: "Dian Anggraini", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0083220177", nama: "Ernawati", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0084417512", nama: "Fadil", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0081846867", nama: "Hamzani", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0071737841", nama: "Hilmi Faozi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0082534073", nama: "Ikhsan Fauzi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087315168", nama: "Junaidi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0088315507", nama: "Khairul Azmi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0089364856", nama: "Lalu Ahmad Muzaki", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087223121", nama: "M. Abdul Azis", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0086071075", nama: "M. Faisal", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0084772654", nama: "M. Rizky", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0077483153", nama: "Moh. Ali Akbar", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087388089", nama: "Muhammad Habib", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087686170", nama: "Muhammad Irwan", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0076024987", nama: "Muhammad Zikri", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0085868328", nama: "Nurul Hikmah", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0082392910", nama: "Pahrul Rozi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0083616982", nama: "Rahmawati", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087228698", nama: "Rendi Saputra", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0083565551", nama: "Rismawati", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0072817083", nama: "Sahroni", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0081306948", nama: "Samsul Hadi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0088857360", nama: "Siti Fatimah", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0083255307", nama: "Sri Wahyuni", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0062495944", nama: "Supriadi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0065716135", nama: "Taufik Hidayat", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0085218799", nama: "Wahyu Ramadani", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0084538235", nama: "Yanuar Firdaus", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0082432799", nama: "Zainul Majdi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087255368", nama: "Zulkifli", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0071942278", nama: "Ahmad Hanafi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0071921043", nama: "Alwan", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0083165691", nama: "Ariyanto", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0064896879", nama: "Asrul Sani", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0088234240", nama: "Budi Santoso", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0076723452", nama: "Dedi Irawan", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0074773681", nama: "Firdaus", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0082688935", nama: "Guntur", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0088189061", nama: "Heriadi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0088141860", nama: "Isnan", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" },
+  { nis: "0087328172", nama: "Juliadi", jurusan: "Teknik Konstruksi dan Perumahan", status: "LULUS" }
+];
+
+  /* ═══════════════════════════════════════════════════════
+     NORMALISASI: huruf kecil + hapus spasi ganda
+     Sehingga "AHMAD raju  liadi" == "Ahmad Raju Liadi"
+  ═══════════════════════════════════════════════════════ */
+  function normalize(str) {
+    return str.toLowerCase().replace(/\s+/g, " ").trim();
+  }
+
+  function cek() {
+    const namaInput = document.getElementById("q-nama").value.trim();
+    const nisInput  = document.getElementById("q-nis").value.trim();
+    const el        = document.getElementById("result");
+    const warn      = document.getElementById("warn");
+    const warnText  = document.getElementById("warn-text");
+
+    warn.classList.remove("show");
+
+    if (!namaInput && !nisInput) { el.innerHTML = ""; return; }
+
+    if (!namaInput) {
+      warnText.textContent = "Kolom Nama belum diisi. Silakan masukkan nama lengkap.";
+      warn.classList.add("show");
+      el.innerHTML = "";
+      document.getElementById("q-nama").focus();
+      return;
+    }
+
+    if (!nisInput) {
+      warnText.textContent = "Kolom NIS belum diisi. Silakan masukkan NIS.";
+      warn.classList.add("show");
+      el.innerHTML = "";
+      document.getElementById("q-nis").focus();
+      return;
+    }
+
+    const found = DATA.find(d =>
+      normalize(d.nama) === normalize(namaInput) &&
+      d.nis.toLowerCase()  === nisInput.toLowerCase()
+    );
+
+    if (!found) {
+      el.innerHTML = `
+        <div class="not-found">
+          <div class="nf-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </div>
+          <p>Data tidak ditemukan.<br>
+          Pastikan <strong>Nama</strong> dan <strong>NIS</strong> yang dimasukkan<br>
+          sesuai dengan data pendaftaran sekolah.</p>
+        </div>`;
+      return;
+    }
+
+    const lulus = found.status === "LULUS";
+    const cls   = lulus ? "pass" : "fail";
+    const msg   = lulus ? "Dinyatakan Lulus" : "Dinyatakan Tidak Lulus";
+    const sub   = lulus
+      ? "Telah memenuhi semua persyaratan kelulusan"
+      : "Silakan hubungi pihak sekolah untuk informasi lebih lanjut";
+    const ico   = lulus
+      ? `<svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>`
+      : `<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
+
+    el.innerHTML = `
+      <div class="result-card ${cls}">
+        <div class="r-banner ${cls}">
+          <div class="status-icon">${ico}</div>
+          <div>
+            <div class="r-title">${msg}</div>
+            <div class="r-sub">${sub}</div>
+          </div>
+        </div>
+        <div class="r-grid">
+          <div class="r-cell">
+            <div class="r-lbl">Nama Lengkap</div>
+            <div class="r-val">${found.nama}</div>
+          </div>
+          <div class="r-cell">
+            <div class="r-lbl">NIS</div>
+            <div class="r-val">${found.nis}</div>
+          </div>
+          <div class="r-cell full">
+            <div class="r-lbl">Jurusan</div>
+            <div class="r-val">${found.jurusan}</div>
+          </div>
+        </div>
+
+        ${lulus ? `
+        <div class="download-area">
+          <a href="berkas_skl/${found.nis}.pdf" download="SKL_${found.nama}.pdf" class="btn-download">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Unduh SKL (PDF)
+          </a>
+        </div>
+        ` : ''}
+      </div>`;
+  }
+</script>
+</body>
+</html>
